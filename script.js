@@ -1,21 +1,22 @@
 function calculateScore() {
     let score = 0;
-    let answers = document.querySelectorAll("input[type='radio']:checked");
 
-    answers.forEach(a => {
-        score += parseInt(a.value);
-    });
+    for (let i = 1; i <= 15; i++) {
+        let answer = document.querySelector('input[name="q' + i + '"]:checked');
+        if (answer) {
+            score += parseInt(answer.value);
+        }
+    }
 
-    let percentage = (score / 1) * 100;
+    let percentage = (score / 15) * 100;
 
     document.getElementById("progressBar").style.width = percentage + "%";
 
-    let resultText = "درجتك: " + percentage + "%";
-
     if (percentage >= 80) {
-        localStorage.setItem("passed", "true");
+        localStorage.setItem("passedLesson1", "true");
         window.location.href = "certificate.html";
     } else {
-        document.getElementById("result").innerHTML = resultText + "<br> حاول مرة أخرى 💡";
+        document.getElementById("result").innerHTML =
+            "درجتك: " + percentage.toFixed(0) + "%<br> حاول مرة أخرى 💡";
     }
 }
