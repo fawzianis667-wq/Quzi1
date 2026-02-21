@@ -5,6 +5,31 @@
 <title>الدروس</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
+
+<script>
+
+window.onload = function(){
+
+// قفل المرحلة 2
+if(localStorage.getItem("lesson1Passed") !== "true"){
+document.getElementById("lesson2").innerHTML =
+"<button disabled style='background:gray;'>🔒 أكمل المرحلة 1 أولًا</button>";
+}
+
+// قفل المرحلة 3
+if(localStorage.getItem("lesson2Passed") !== "true"){
+document.getElementById("lesson3").innerHTML =
+"<button disabled style='background:gray;'>🔒 أكمل المرحلة 2 أولًا</button>";
+}
+
+}
+
+</script>
+
+
+
+  
 <body>
 
 <header>📚 قائمة الدروس</header>
